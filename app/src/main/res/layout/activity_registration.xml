@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <EditText
+        android:id="@+id/emailAddressEt"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edittext_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="البريد الالكتروني"
+        android:inputType="textPersonName"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <EditText
+        android:id="@+id/password2Et"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="تأكيد كلمة السر"
+        android:inputType="numberPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEt"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressEt"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEt" />
+
+    <EditText
+        android:id="@+id/usernameEt"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="اسم المستخدم"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressEt"
+        app:layout_constraintTop_toBottomOf="@+id/emailAddressEt" />
+
+    <EditText
+        android:id="@+id/passwordEt"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_shape"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:hint="كلمة السر"
+        android:inputType="numberPassword"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressEt"
+        app:layout_constraintTop_toBottomOf="@+id/usernameEt" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="انشاء حساب جديد"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView11" />
+
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/btn_shape_green"
+        android:text="انشاء حساب جديد"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/emailAddressEt"
+        app:layout_constraintTop_toBottomOf="@+id/password2Et" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_email"
+        app:layout_constraintBottom_toTopOf="@+id/usernameEt"
+        app:layout_constraintEnd_toEndOf="@+id/emailAddressEt"
+        app:layout_constraintTop_toTopOf="@+id/emailAddressEt"
+        app:layout_constraintVertical_bias="0.307" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/password2Et"
+        app:layout_constraintEnd_toEndOf="@+id/password2Et"
+        app:layout_constraintTop_toTopOf="@+id/password2Et"
+        android:src="@drawable/ic_lock_24" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordEt"
+        app:layout_constraintEnd_toEndOf="@+id/passwordEt"
+        app:layout_constraintTop_toTopOf="@+id/passwordEt"
+        android:src="@drawable/ic_lock_24" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/usernameEt"
+        app:layout_constraintEnd_toEndOf="@+id/usernameEt"
+        app:layout_constraintTop_toTopOf="@+id/usernameEt"
+        android:src="@drawable/ic_profile" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:src="@drawable/common_google_signin_btn_icon_light_normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
