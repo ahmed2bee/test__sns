@@ -4,6 +4,7 @@ plugins {
   id 'androidx.navigation.safeargs'
   id 'dagger.hilt.android.plugin'
   id 'kotlin-android-extensions'
+  id 'com.google.gms.google-services'
 }
 
 android {
@@ -62,6 +63,8 @@ dependencies {
 
   //Firebase
   implementation "com.google.firebase:firebase-core:19.0.0"
+  implementation platform('com.google.firebase:firebase-bom:28.4.0')
+  implementation 'com.google.firebase:firebase-analytics-ktx'
 
   //Retrofit and GSON
   implementation 'com.squareup.retrofit2:retrofit:2.9.0'
