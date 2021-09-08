@@ -20,9 +20,9 @@ import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegate
 import com.zeugmasolutions.localehelper.LocaleHelperActivityDelegateImpl
 import com.zeugmasolutions.localehelper.Locales
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
 
-open class BaseFragment(
+abstract class BaseFragment(
     @LayoutRes private val layoutRes: Int
 ) : Fragment() {
 
@@ -32,8 +32,12 @@ open class BaseFragment(
         savedInstanceState: Bundle?
     ): View? {
 
+        initViews()
         return inflater.inflate(layoutRes, container, false)
     }
+
+    abstract fun initViews()
+    abstract fun initObservables()
 
     fun getDate(pattern: String): String {
         return SimpleDateFormat(pattern).format(Date())
