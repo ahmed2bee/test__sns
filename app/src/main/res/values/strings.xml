@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Zatsh</string>
+    <string name="app_name">SNS</string>
     <string name="error">Error</string>
 
     <string name="please_check_internet">Please check internet connection</string>

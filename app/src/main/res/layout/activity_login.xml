@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,7 +14,7 @@
         android:layout_marginEnd="30dp"
         android:background="@drawable/edittext_shape"
         android:gravity="center"
-        android:hint="البريد الالكتروني"
+        android:hint="Email"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,6 +30,7 @@
         android:background="@drawable/edittext_shape"
         android:gravity="center"
         android:hint="كلمة السر"
+        android:visibility="gone"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="@+id/et_username"
         app:layout_constraintStart_toStartOf="@+id/et_username"
@@ -37,15 +39,15 @@
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="16dp"
-        android:drawablePadding="10dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/btn_shape_green"
+        android:drawablePadding="10dp"
         android:gravity="center"
-        android:text="دخول"
-        app:layout_constraintEnd_toEndOf="@+id/et_password"
+        android:text="Login"
+        app:layout_constraintEnd_toEndOf="@+id/et_username"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintStart_toStartOf="@+id/et_username"
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <ProgressBar
@@ -66,6 +68,7 @@
         android:layout_marginStart="32dp"
         android:text="هل نسيت كلمة المرور ؟"
         android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/signUp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
@@ -82,6 +85,7 @@
         android:text="انشاءحساب جديد"
         android:textColor="@color/black"
         android:textSize="23sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -93,10 +97,10 @@
         android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
         android:src="@drawable/ic_email"
-        android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/et_username"
-        app:layout_constraintEnd_toEndOf="@+id/et_username"
+        app:layout_constraintStart_toStartOf="@+id/et_username"
         app:layout_constraintTop_toTopOf="@+id/et_username"
         app:layout_constraintVertical_bias="0.437" />
 
@@ -105,6 +109,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_lock_24"
+        android:visibility="gone"
         android:layout_marginEnd="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/et_password"
         app:layout_constraintEnd_toEndOf="@+id/et_password"
@@ -119,6 +124,6 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/common_full_open_on_phone" />
+        android:src="@drawable/main_new_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

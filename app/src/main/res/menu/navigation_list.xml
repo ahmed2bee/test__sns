@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/moreFragment"
-        android:title="المزيد"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"/>
+<!--    <item android:id="@+id/moreFragment"-->
+<!--        android:title="المزيد"-->
+<!--        android:icon="@drawable/common_google_signin_btn_icon_dark"/>-->
 
 <!--    <item android:id="@+id/myOrdersFragment"-->
 <!--        android:title="طلباتي"-->
@@ -13,8 +13,8 @@
 <!--        android:title="سله المشتريات"-->
 <!--        android:icon="@drawable/ic_shopping_cart"/>-->
 
-    <item android:id="@+id/categoriesFragment"
-        android:title="الرئيسية"
-        android:icon="@drawable/common_google_signin_btn_text_dark_focused"/>
+<!--    <item android:id="@+id/categoriesFragment"-->
+<!--        android:title="الرئيسية"-->
+<!--        android:icon="@drawable/common_google_signin_btn_text_dark_focused"/>-->
 
 </menu>
