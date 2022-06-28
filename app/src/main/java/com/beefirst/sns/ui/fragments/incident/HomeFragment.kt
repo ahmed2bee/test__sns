@@ -18,12 +18,12 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
   override fun initViews() {
     viewModel.getIncidents()
+    initObservables()
   }
 
   override fun initObservables() {
     viewModel.incidents.observe(viewLifecycleOwner, {
       if (it.incidents.isNotEmpty()) {
-        Log.i("bingoinitObservablesinitObservables", "initObservables: ${it.incidents[0].id}")
         hideView(progressBar)
         incidents_rv.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         incidents_rv.adapter = IncidentAdapter(requireContext(), it)

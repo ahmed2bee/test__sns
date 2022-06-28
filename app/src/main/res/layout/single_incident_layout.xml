@@ -16,11 +16,15 @@
 
         <TextView
             android:id="@+id/tvDesc"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:textColor="@color/black"
+            android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif-condensed"
+            android:maxLines="4"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/tvID"
             app:layout_constraintTop_toBottomOf="@+id/tvID"
             tools:text="Description" />
@@ -29,42 +33,47 @@
             android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textColor="#808080"
             android:textSize="11sp"
-            app:layout_constraintBottom_toBottomOf="@+id/incident_img"
             app:layout_constraintStart_toStartOf="@+id/tvID"
+            app:layout_constraintTop_toBottomOf="@+id/tvDesc"
             tools:text="Description" />
 
         <TextView
             android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-condensed"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDesc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/incident_img"
             tools:text="date" />
 
         <TextView
             android:id="@+id/tvID"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLines="2"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/incident_img"
             app:layout_constraintTop_toTopOf="@+id/incident_img"
-            tools:text="id" />
+            tools:text="0be8e341-5364-44c9-88a5-99bfc91d12ad" />
 
         <ImageView
             android:id="@+id/incident_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginBottom="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

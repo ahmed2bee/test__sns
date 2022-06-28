@@ -1,6 +1,7 @@
 package com.beefirst.sns.adapters
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,14 +35,20 @@ class IncidentAdapter(
         holder: MyHolder,
         position: Int
     ) {
-        if (list.incidents[position].medias[0].mimeType.contains("jpg") ||
-            list.incidents[position].medias[0].mimeType.contains("png"))
-                Picasso.get().load(list.incidents[position].medias[0].url).into(holder.incidentImage)
+        if (list.incidents[position].medias.isNotEmpty()) {
+            if (list.incidents[position].medias[0].mimeType.contains("jpg") ||
+                list.incidents[position].medias[0].mimeType.contains("png")
+            )
+                Picasso.get().load(list.incidents[position].medias[0].url)
+                    .into(holder.incidentImage)
+        }
 
         holder.id.text = list.incidents[position].id
         holder.description.text = list.incidents[position].description
         holder.date.text = convertDate(list.incidents[position].createdAt)
-        holder.status.text = statusTypes(list.incidents[position].status)
+
+        holder.status.text = if (list.incidents[position].medias.isEmpty()) "No Status Yet!"
+        else statusTypes(list.incidents[position].status)
     }
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -55,7 +62,7 @@ class IncidentAdapter(
     }
 
     private fun convertDate(date: String): String {
-        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
         val date: Date = format.parse(date)
         return date.toString()
     }
