@@ -47,7 +47,7 @@ abstract class BaseFragment(
         return SimpleDateFormat(pattern).format(Date())
     }
 
-    private fun getMonths(): ArrayAdapter<String> {
+    fun getMonths(): ArrayAdapter<String> {
         var monthAdapter: ArrayAdapter<String>? = null
 
         val months = arrayOf(
@@ -59,6 +59,32 @@ abstract class BaseFragment(
         monthAdapter =
             ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, months)
         return monthAdapter
+    }
+
+    fun putSpinnerData(list: ArrayList<String>): ArrayAdapter<String> {
+        var spinnerList: ArrayAdapter<String>? = null
+
+        val spinnerData = ArrayList<String>()
+
+        for (element in list)
+            spinnerData.add(element)
+
+            spinnerList =
+            ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, spinnerData)
+        return spinnerList!!
+    }
+
+    fun putSpinnerData(list: HashSet<String>): ArrayAdapter<String> {
+        var spinnerList: ArrayAdapter<String>? = null
+
+        val spinnerData = ArrayList<String>()
+
+        for (element in list)
+            spinnerData.add(element)
+
+        spinnerList =
+            ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, spinnerData)
+        return spinnerList!!
     }
 
     fun changeLanguage() {

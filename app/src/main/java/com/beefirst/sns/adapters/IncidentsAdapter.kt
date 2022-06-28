@@ -1,21 +1,21 @@
 package com.beefirst.sns.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.beefirst.sns.R
-import com.beefirst.sns.model.IncidentModel
+import com.beefirst.sns.enums.StatusTypes
+import com.beefirst.sns.model.Incident
+import com.beefirst.sns.utils.DatesUtils
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.single_incident_layout.view.*
-import java.text.SimpleDateFormat
-import java.util.*
+import kotlin.collections.ArrayList
 
 class IncidentAdapter(
     private val context: Context,
-    private val list: IncidentModel,
+    private val list: ArrayList<Incident>,
 ) : RecyclerView.Adapter<IncidentAdapter.MyHolder>() {
 
 
@@ -29,26 +29,26 @@ class IncidentAdapter(
         )
     }
 
-    override fun getItemCount(): Int = list.incidents.size
+    override fun getItemCount(): Int = list.size
 
     override fun onBindViewHolder(
         holder: MyHolder,
         position: Int
     ) {
-        if (list.incidents[position].medias.isNotEmpty()) {
-            if (list.incidents[position].medias[0].mimeType.contains("jpg") ||
-                list.incidents[position].medias[0].mimeType.contains("png")
+        if (list[position].medias.isNotEmpty()) {
+            if (list[position].medias[0].mimeType.contains("jpg") ||
+                list[position].medias[0].mimeType.contains("png")
             )
-                Picasso.get().load(list.incidents[position].medias[0].url)
+                Picasso.get().load(list[position].medias[0].url)
                     .into(holder.incidentImage)
         }
 
-        holder.id.text = list.incidents[position].id
-        holder.description.text = list.incidents[position].description
-        holder.date.text = convertDate(list.incidents[position].createdAt)
+        holder.id.text = list[position].id
+        holder.description.text = list[position].description
+        holder.date.text = DatesUtils.convertDateTime(list[position].createdAt)
 
-        holder.status.text = if (list.incidents[position].medias.isEmpty()) "No Status Yet!"
-        else statusTypes(list.incidents[position].status)
+        holder.status.text = if (list[position].medias.isEmpty()) "No Status Yet!"
+        else StatusTypes.statusTypes(list[position].status)
     }
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -59,21 +59,5 @@ class IncidentAdapter(
         var date = itemView.tvDate!!
         var status = itemView.tvStatus!!
 
-    }
-
-    private fun convertDate(date: String): String {
-        val format = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
-        val date: Date = format.parse(date)
-        return date.toString()
-    }
-
-    private fun statusTypes(type: Int): String {
-        when (type) {
-            0 -> return "Submitted"
-            1 -> return "InProgress"
-            2 -> return "Completed"
-            3 -> return "Rejected"
-        }
-        return ""
     }
 }
