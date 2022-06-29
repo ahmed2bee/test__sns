@@ -5,10 +5,13 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/btn_shape_green.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/ic_plus.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/ic_plus_white.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_verification_otpactivity.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/fragment_new_incident.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/single_incident_layout.xml" value="0.5" />
         <entry key="app/src/main/res/menu/navigation_list.xml" value="0.3645833333333333" />
       </map>

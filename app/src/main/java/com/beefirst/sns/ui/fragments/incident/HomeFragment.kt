@@ -4,10 +4,13 @@ import android.annotation.SuppressLint
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.beefirst.sns.R
 import com.beefirst.sns.adapters.IncidentAdapter
+import com.beefirst.sns.enums.Consts
 import com.beefirst.sns.enums.StatusTypes
 import com.beefirst.sns.model.Incident
 import com.beefirst.sns.utils.DatesUtils
@@ -21,17 +24,34 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
   private val viewModel: IncidentViewModel by hiltNavGraphViewModels(R.id.homeFragment)
 
   var incidents = ArrayList<Incident>()
-  var allIncidents = ArrayList<Incident>()
 
   var selectedStatus = ""
   var selectedDate = ""
 
+  var isDataLocally = false
+
   override fun initViews() {
-    viewModel.getIncidents()
-    initObservables()
+
+    if(arguments != null)
+      isDataLocally = arguments?.getBoolean("isDataLocally")!!
+
+    // check if user add a new incident and come back into home page or not
+    if (!isDataLocally) {
+      viewModel.getIncidents()
+      initObservables()
+    } else {
+      hideView(progressBar)
+      incidents.addAll(Consts.allIncidents)
+      initRecyclerView(Consts.allIncidents)
+      initStatusSpinner()
+      initDateSpinner()
+    }
 
     btnFilter.setOnClickListener { filterIncidents(selectedDate, selectedStatus) }
-    tvRemoveFilter.setOnClickListener { initRecyclerView(allIncidents) }
+    tvRemoveFilter.setOnClickListener { initRecyclerView(Consts.allIncidents) }
+    fabAddNew.setOnClickListener {
+      findNavController().navigate(R.id.homeToNewIncident)
+    }
   }
 
   override fun initObservables() {
@@ -39,11 +59,11 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
       if (it.incidents.isNotEmpty()) {
         hideView(progressBar)
 
-        incidents.addAll(it.incidents)
-        allIncidents.addAll(it.incidents)
-        initRecyclerView(incidents)
-        initStatusSpinner()
-        initDateSpinner()
+          incidents.addAll(it.incidents)
+          Consts.allIncidents.addAll(it.incidents)
+          initRecyclerView(incidents)
+          initStatusSpinner()
+          initDateSpinner()
       }
     })
   }
@@ -110,22 +130,22 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
     incidents.clear()
 
     if (date != "" && status == "") {
-      for (i in allIncidents.indices) {
-        if (date == DatesUtils.convertDateTime(allIncidents[i].createdAt).substring(0, 11)) {
-          incidents.add(allIncidents[i])
+      for (i in Consts.allIncidents.indices) {
+        if (date == DatesUtils.convertDateTime(Consts.allIncidents[i].createdAt).substring(0, 11)) {
+          incidents.add(Consts.allIncidents[i])
         }
       }
     } else if (date == "" && status != "") {
-      for (i in allIncidents.indices) {
-        if (status == StatusTypes.statusTypes(allIncidents[i].status)) {
-          incidents.add(allIncidents[i])
+      for (i in Consts.allIncidents.indices) {
+        if (status == StatusTypes.statusTypes(Consts.allIncidents[i].status)) {
+          incidents.add(Consts.allIncidents[i])
         }
       }
     } else {
-      for (i in allIncidents.indices) {
-        if (status == StatusTypes.statusTypes(allIncidents[i].status) &&
-          date == DatesUtils.convertDateTime(allIncidents[i].createdAt).substring(0, 11)) {
-          incidents.add(allIncidents[i])
+      for (i in Consts.allIncidents.indices) {
+        if (status == StatusTypes.statusTypes(Consts.allIncidents[i].status) &&
+          date == DatesUtils.convertDateTime(Consts.allIncidents[i].createdAt).substring(0, 11)) {
+          incidents.add(Consts.allIncidents[i])
         }
       }
     }
