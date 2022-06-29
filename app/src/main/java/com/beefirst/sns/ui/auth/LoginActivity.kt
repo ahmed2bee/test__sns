@@ -24,7 +24,7 @@ class LoginActivity : BaseActivity() {
         setContentView(R.layout.activity_login)
 
         // Testing Only
-        et_username.setText("aaa@hotmail.com")
+//        et_username.setText("aaa@hotmail.com")
         //      et_password.setText("Mahmoud1234")
 
         initViews()
