@@ -16,7 +16,8 @@ import kotlin.collections.ArrayList
 class IncidentAdapter(
     private val context: Context,
     private val list: ArrayList<Incident>,
-) : RecyclerView.Adapter<IncidentAdapter.MyHolder>() {
+    private val listener: IncidentClicked,
+    ) : RecyclerView.Adapter<IncidentAdapter.MyHolder>() {
 
 
     override fun onCreateViewHolder(
@@ -27,6 +28,14 @@ class IncidentAdapter(
             LayoutInflater.from(context)
                 .inflate(R.layout.single_incident_layout, parent, false)
         )
+    }
+
+    override fun getItemId(position: Int): Long {
+        return position.toLong()
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
     }
 
     override fun getItemCount(): Int = list.size
@@ -47,8 +56,9 @@ class IncidentAdapter(
         holder.description.text = list[position].description
         holder.date.text = DatesUtils.convertDateTime(list[position].createdAt)
 
-        holder.status.text = if (list[position].medias.isEmpty()) "No Status Yet!"
-        else StatusTypes.statusTypes(list[position].status)
+        holder.status.text = StatusTypes.statusTypes(list[position].status)
+
+        holder.changeStatus.setOnClickListener { listener.onIncidentClicked(position) }
     }
 
     inner class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -58,6 +68,13 @@ class IncidentAdapter(
         var description = itemView.tvDesc!!
         var date = itemView.tvDate!!
         var status = itemView.tvStatus!!
+        var changeStatus = itemView.tvChangeStatus!!
 
+    }
+
+    interface IncidentClicked {
+        fun onIncidentClicked(
+            position: Int
+        )
     }
 }

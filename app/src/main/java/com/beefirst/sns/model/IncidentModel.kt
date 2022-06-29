@@ -15,7 +15,7 @@ data class Incident(
     val longitude: Double,
     val medias: List<Media>,
     val priority: Any,
-    val status: Int,
+    var status: Int,
     val typeId: Int,
     val updatedAt: String
 )
